@@ -181,7 +181,7 @@ async function setup() {
   // Opdater Spotify hvert minut
   setInterval(
     updateSpotify,
-    60 * 1000
+    10 * 1000
   );
 }
 
