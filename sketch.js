@@ -31,7 +31,7 @@ const spotifyRedirectUri =
 
 
 const spotifyScope =
-  "user-read-recently-played";
+  "user-read-recently-played user-read-currently-playing";
 
 
 let spotifyAccessToken = null;
@@ -2400,13 +2400,79 @@ async function refreshSpotifyToken() {
 // =====================================================
 
 async function updateSpotify() {
+  if (!spotifyAccessToken) {
+    return;
+  }
 
-  if (
-    spotifyConnected
-  ) {
+  try {
+    // Prøv først at hente sangen der spiller LIGE NU
+    let response = await fetch(
+      "https://api.spotify.com/v1/me/player/currently-playing",
+      {
+        headers: {
+          Authorization: "Bearer " + spotifyAccessToken
+        }
+      }
+    );
 
+    // Token er udløbet
+    if (response.status === 401) {
+      let refreshed = await refreshSpotifyToken();
+
+      if (refreshed) {
+        return await updateSpotify();
+      }
+
+      spotifyConnected = false;
+      return;
+    }
+
+    // 200 = der spiller noget lige nu
+    if (response.status === 200) {
+      const data = await response.json();
+
+      if (data && data.item) {
+        const track = data.item;
+
+        spotifySong = track.name;
+
+        spotifyArtist = track.artists
+          .map(artist => artist.name)
+          .join(", ");
+
+        spotifyAlbum = track.album.name;
+
+        if (
+          track.album.images &&
+          track.album.images.length > 0
+        ) {
+          spotifyCover = await loadImage(
+            track.album.images[0].url
+          );
+        }
+
+        spotifyConnected = true;
+
+        console.log(
+          "Spiller lige nu:",
+          spotifySong,
+          "-",
+          spotifyArtist
+        );
+
+        return;
+      }
+    }
+
+    // Hvis intet spiller lige nu:
+    // hent senest afspillede sang
     await getRecentlyPlayed();
 
+  } catch (error) {
+    console.log(
+      "Spotify update fejl:",
+      error
+    );
   }
 }
 
