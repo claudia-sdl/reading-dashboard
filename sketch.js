@@ -1149,7 +1149,7 @@ function drawBirdText() {
 function drawSpotifyCircle() {
 
   let x =
-    width * 0.17;
+    width * 0.25;
 
 
   let y =
@@ -1157,7 +1157,7 @@ function drawSpotifyCircle() {
 
 
   let normalSize =
-    240;
+    300;
 
 
   let circleSize =
@@ -1180,7 +1180,7 @@ function drawSpotifyCircle() {
   ) {
 
     circleSize =
-      255;
+      315;
 
   }
 
