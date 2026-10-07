@@ -529,7 +529,7 @@ function drawGreeting() {
   text(
     greeting,
     width / 2,
-    75
+    95
   );
 
 
@@ -603,7 +603,7 @@ function drawDateAndTime() {
   text(
     timeText,
     width / 2,
-    120
+    140
   );
 
 
@@ -616,7 +616,7 @@ function drawDateAndTime() {
   text(
     dateText,
     width / 2,
-    145
+    165
   );
 
 
@@ -663,7 +663,7 @@ function drawWeather() {
   text(
     "Tessebølle, DK",
     width / 2,
-    180
+    200
   );
 
 
@@ -694,7 +694,7 @@ function drawWeather() {
 
   text(
     temp + "°",
-    width / 2 - 90,
+    width / 2 - 65,
     245
   );
 
@@ -736,7 +736,7 @@ function drawWeather() {
 
   text(
     weatherSym,
-    width / 2 + 90,
+    width / 2 + 65,
     260
   );
 
