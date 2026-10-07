@@ -1433,23 +1433,23 @@ function drawSpotifyCircle() {
 // 💗 FAVORITES CIRKEL
 // =====================================================
 
+// =====================================================
+// 🌙 MOON PHASE CIRKEL
+// =====================================================
+
 function drawFavoriteCircle() {
 
   let x =
     width * 0.80;
 
-
   let y =
     height * 0.45;
-
 
   let normalSize =
     320;
 
-
   let circleSize =
     normalSize;
-
 
   let d =
     dist(
@@ -1459,37 +1459,44 @@ function drawFavoriteCircle() {
       y
     );
 
-
+  // Hover
   if (
     d <
     normalSize / 2
   ) {
-
     circleSize =
       335;
-
   }
+
+
+  // Beregn månens alder
+  let moonAge =
+    getMoonAge();
+
+  // Find måne-symbol
+  let moonSymbol =
+    getMoonSymbol(
+      moonAge
+    );
+
+  // Find næste store fase
+  let nextPhase =
+    getNextMoonPhase(
+      moonAge
+    );
 
 
   push();
 
-
-  stroke(
-    255
-  );
-
-
-  strokeWeight(
-    6
-  );
-
+  // Cirkel
+  stroke(255);
+  strokeWeight(6);
 
   fill(
     238,
     140,
     180
   );
-
 
   circle(
     x,
@@ -1503,59 +1510,65 @@ function drawFavoriteCircle() {
     CENTER
   );
 
-
-  textFont(
-    symbolfont
-  );
-
-
-  textSize(
-    circleSize *
-    0.42
-  );
-
-
   noStroke();
 
 
-  fill(
-    255
-  );
+  // Månen
+  textSize(95);
 
-
-  // Heartz font
   text(
-    "P",
+    moonSymbol,
     x,
-    y
+    y - 55
   );
 
+
+  // Overskrift
+  textFont(
+    "Gabriela"
+  );
+
+  fill(
+    255,
+    235,
+    245
+  );
+
+  textSize(13);
+
+  text(
+    "MOON PHASE",
+    x,
+    y + 25
+  );
+
+
+  // Næste fase
+  fill(255);
+
+  textSize(17);
+
+  text(
+    nextPhase,
+    x,
+    y + 58
+  );
 
   pop();
 
 
-  // LABEL
-
+  // Label under cirklen
   push();
 
-
-  textAlign(
-    CENTER
-  );
-
+  textAlign(CENTER);
 
   textFont(
     "Gabriela"
   );
 
-
-  textSize(
-    18
-  );
-
+  textSize(18);
 
   noStroke();
-
 
   fill(
     155,
@@ -1563,19 +1576,194 @@ function drawFavoriteCircle() {
     120
   );
 
-
   text(
-    "Favorites",
+    "Moon",
     x,
     y +
-    circleSize / 2 +
-    30
+      circleSize / 2 +
+      30
   );
-
 
   pop();
 }
 
+
+// =====================================================
+// 🌙 BEREGN MÅNENS ALDER
+// =====================================================
+
+function getMoonAge() {
+
+  let now =
+    new Date();
+
+  // Kendt nymåne
+  let knownNewMoon =
+    new Date(
+      Date.UTC(
+        2000,
+        0,
+        6,
+        18,
+        14
+      )
+    );
+
+  let lunarCycle =
+    29.53058867;
+
+  let daysSince =
+    (
+      now.getTime() -
+      knownNewMoon.getTime()
+    ) /
+    86400000;
+
+  let age =
+    daysSince %
+    lunarCycle;
+
+  if (age < 0) {
+    age += lunarCycle;
+  }
+
+  return age;
+}
+
+
+// =====================================================
+// 🌙 VÆLG MÅNE-SYMBOL
+// =====================================================
+
+function getMoonSymbol(age) {
+
+  if (age < 1.85)
+    return "🌑";
+
+  if (age < 5.54)
+    return "🌒";
+
+  if (age < 9.23)
+    return "🌓";
+
+  if (age < 12.92)
+    return "🌔";
+
+  if (age < 16.61)
+    return "🌕";
+
+  if (age < 20.30)
+    return "🌖";
+
+  if (age < 23.99)
+    return "🌗";
+
+  if (age < 27.68)
+    return "🌘";
+
+  return "🌑";
+}
+
+
+// =====================================================
+// 🌙 NÆSTE STORE MÅNEFASE
+// =====================================================
+
+function getNextMoonPhase(age) {
+
+  let cycle =
+    29.53058867;
+
+  let firstQuarter =
+    cycle * 0.25;
+
+  let fullMoon =
+    cycle * 0.50;
+
+  let lastQuarter =
+    cycle * 0.75;
+
+
+  if (age < firstQuarter) {
+
+    let days =
+      Math.round(
+        firstQuarter - age
+      );
+
+    if (days <= 0) {
+      return "Half moon ✨";
+    }
+
+    return (
+      "Half moon in " +
+      days +
+      (days === 1
+        ? " day"
+        : " days")
+    );
+  }
+
+
+  if (age < fullMoon) {
+
+    let days =
+      Math.round(
+        fullMoon - age
+      );
+
+    if (days <= 0) {
+      return "Full moon ✨";
+    }
+
+    return (
+      "Full moon in " +
+      days +
+      (days === 1
+        ? " day"
+        : " days")
+    );
+  }
+
+
+  if (age < lastQuarter) {
+
+    let days =
+      Math.round(
+        lastQuarter - age
+      );
+
+    if (days <= 0) {
+      return "Half moon ✨";
+    }
+
+    return (
+      "Half moon in " +
+      days +
+      (days === 1
+        ? " day"
+        : " days")
+    );
+  }
+
+
+  let days =
+    Math.round(
+      cycle - age
+    );
+
+  if (days <= 0) {
+    return "New moon ✨";
+  }
+
+  return (
+    "New moon in " +
+    days +
+    (days === 1
+      ? " day"
+      : " days")
+  );
+}
 
 // =====================================================
 // 🎧 SPOTIFY SETUP
