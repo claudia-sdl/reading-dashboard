@@ -737,7 +737,7 @@ function drawWeather() {
   text(
     weatherSym,
     width / 2 + 65,
-    260
+    270
   );
 
 
