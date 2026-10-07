@@ -1599,7 +1599,7 @@ async function setupSpotify() {
   try {
 
     searchParams =
-      window.top.location.search;
+      window.location.search;
 
   }
 
@@ -1666,7 +1666,7 @@ async function setupSpotify() {
 
     try {
 
-      window.top.history.replaceState(
+      window.history.replaceState(
         {},
         document.title,
         spotifyRedirectUri
@@ -1813,7 +1813,7 @@ async function loginSpotify() {
   // Ellers prøver Spotify at åbne inde i p5 iframe.
   // ---------------------------------------------------
 
-  window.top.location.href =
+  window.location.href =
     authURL.toString();
 }
 
