@@ -2231,18 +2231,7 @@ async function getRecentlyPlayed() {
 
       // Albumcover
 
-      if (
-        track.album.images &&
-        track.album.images.length > 0
-      ) {
-
-        spotifyCover =
-  await loadImage(
-    track.album.images[0].url
-          );
-
-      }
-
+     spotifyCover = null;
 
       spotifyConnected =
         true;
