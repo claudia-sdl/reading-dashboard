@@ -2237,8 +2237,8 @@ async function getRecentlyPlayed() {
       ) {
 
         spotifyCover =
-          loadImage(
-            track.album.images[0].url
+  await loadImage(
+    track.album.images[0].url
           );
 
       }
