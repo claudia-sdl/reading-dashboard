@@ -1149,15 +1149,15 @@ function drawBirdText() {
 function drawSpotifyCircle() {
 
   let x =
-    width * 0.25;
+    width * 0.20;
 
 
   let y =
-    height * 0.68;
+    height * 0.45;
 
 
   let normalSize =
-    300;
+    320;
 
 
   let circleSize =
@@ -1180,7 +1180,7 @@ function drawSpotifyCircle() {
   ) {
 
     circleSize =
-      315;
+      335;
 
   }
 
@@ -1436,15 +1436,15 @@ function drawSpotifyCircle() {
 function drawFavoriteCircle() {
 
   let x =
-    width * 0.83;
+    width * 0.80;
 
 
   let y =
-    height * 0.68;
+    height * 0.45;
 
 
   let normalSize =
-    240;
+    320;
 
 
   let circleSize =
@@ -1466,7 +1466,7 @@ function drawFavoriteCircle() {
   ) {
 
     circleSize =
-      255;
+      335;
 
   }
 
@@ -2522,15 +2522,15 @@ function shortenText(
 function mouseMoved() {
 
   let spotifyX =
-    width * 0.17;
+    width * 0.20;
 
 
   let favoriteX =
-    width * 0.83;
+    width * 0.80;
 
 
   let buttonY =
-    height * 0.68;
+    height * 0.45;
 
 
   let overSpotify =
@@ -2539,7 +2539,7 @@ function mouseMoved() {
       mouseY,
       spotifyX,
       buttonY
-    ) < 125;
+    ) < 160;
 
 
   let overFavorite =
@@ -2548,7 +2548,7 @@ function mouseMoved() {
       mouseY,
       favoriteX,
       buttonY
-    ) < 125;
+    ) < 160;
 
 
   if (
@@ -2600,7 +2600,7 @@ function mousePressed() {
       mouseY,
       spotifyX,
       buttonY
-    ) < 125
+    ) < 160
   ) {
 
     // Ikke connected
@@ -2637,7 +2637,7 @@ function mousePressed() {
       mouseY,
       favoriteX,
       buttonY
-    ) < 125
+    ) < 160
   ) {
 
     console.log(
