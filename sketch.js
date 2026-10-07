@@ -695,7 +695,7 @@ function drawWeather() {
   text(
     temp + "°",
     width / 2 - 65,
-    245
+    280
   );
 
 
@@ -766,7 +766,7 @@ function drawWeather() {
   text(
     getWeatherMessage(),
     width / 2,
-    305
+    335
   );
 
 
@@ -1001,7 +1001,7 @@ function drawQuote() {
   text(
     "📖 Dagens quote",
     width / 2,
-    355
+    405
   );
 
 
@@ -1027,7 +1027,7 @@ function drawQuote() {
     todaysQuote +
     '"',
     width / 2,
-    395
+    445
   );
 
 
@@ -1084,7 +1084,7 @@ function drawBook() {
   image(
     bookImage,
     width / 2,
-    455 + floating,
+    510 + floating,
     bookWidth,
     bookHeight
   );
@@ -1134,7 +1134,7 @@ function drawBirdText() {
       randomBird
     ],
     width / 2,
-    520
+    height - 45
   );
 
 
