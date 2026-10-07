@@ -27,7 +27,7 @@ const spotifyClientId = "b33a94c6acaf409b8dd146dc0c2c1201";
 
 // SKAL være præcis den samme i Spotify Dashboard
 const spotifyRedirectUri =
-  "https://editor.p5js.org/claudia.sdl/full/SI2QkDMa1";
+  "https://claudia-sdl.github.io/reading-dashboard/";
 
 
 const spotifyScope =
