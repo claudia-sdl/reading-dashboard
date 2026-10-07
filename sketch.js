@@ -333,7 +333,7 @@ function createParticles() {
 
   for (
     let i = 0;
-    i < 35;
+    i < 70;
     i++
   ) {
 
@@ -367,8 +367,8 @@ function createParticles() {
 
       alpha:
         random(
-          40,
-          110
+          70,
+          150
         )
 
     });
