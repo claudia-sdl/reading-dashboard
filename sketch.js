@@ -2767,15 +2767,15 @@ function mouseMoved() {
 function mousePressed() {
 
   let spotifyX =
-    width * 0.17;
+    width * 0.20;
 
 
   let favoriteX =
-    width * 0.83;
+    width * 0.80;
 
 
   let buttonY =
-    height * 0.68;
+    height * 0.45;
 
 
   // ===================================================
@@ -2808,7 +2808,7 @@ function mousePressed() {
 
     else {
 
-      getRecentlyPlayed();
+      updateSpotify();
 
     }
 
