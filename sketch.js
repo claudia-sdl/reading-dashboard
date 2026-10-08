@@ -1072,7 +1072,7 @@ function drawBook() {
 
 
   let bookWidth =
-    160;
+    350;
 
 
   let bookHeight =
@@ -1084,7 +1084,7 @@ function drawBook() {
   image(
     bookImage,
     width / 2,
-    height - 100 + floating,
+    height - 150 + floating,
     bookWidth,
     bookHeight
   );
