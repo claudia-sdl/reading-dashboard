@@ -555,12 +555,16 @@ function drawDateAndTime() {
       minute(),
       2
     );
+  let s =
+  nf(second(), 2);
 
 
   let timeText =
     h +
-    ":" +
-    m;
+  ":" +
+  m +
+  ":" +
+  s;
 
 
   let dateText =
