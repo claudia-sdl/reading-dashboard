@@ -206,7 +206,7 @@ function draw() {
 
   drawBook();
 
-  drawBirdText();
+  //drawBirdText();
 
   drawSpotifyCircle();
 
